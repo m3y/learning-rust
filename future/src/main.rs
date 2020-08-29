@@ -1,19 +1,31 @@
-use futures::executor;
+use futures::{executor, future::join_all};
+use std::future::Future;
+use std::pin::Pin;
+use std::task::{Context, Poll};
 
-struct User {}
+struct CountDown(u32);
 
-struct UserId(u32);
+impl Future for CountDown {
+    type Output = String;
 
-struct Db {}
-
-impl Db {
-    async fn find_by_user_id(&self, user_id: UserId) -> Option<User> {}
-}
-
-async fn find_user_by_id(db: Db, user_id: UserId) -> Option<User> {
-    db.find_by_user_id(user_id).await
+    fn poll(mut self: Pin<&mut Self>, cx: &mut Context) -> Poll<String> {
+        if self.0 == 0 {
+            Poll::Ready("Zero!!!".to_string())
+        } else {
+            println!("{}", self.0);
+            self.0 -= 1;
+            cx.waker().wake_by_ref();
+            Poll::Pending
+        }
+    }
 }
 
 fn main() {
-    executor::block_on(find_user_by_id(Db {}, UserId(1)));
+    let countdown_future1 = CountDown(10);
+    let countdown_future2 = CountDown(20);
+    let cd_set = join_all(vec![countdown_future1, countdown_future2]);
+    let res = executor::block_on(cd_set);
+    for (i, s) in res.iter().enumerate() {
+        println!("{}: {}", i, s);
+    }
 }
