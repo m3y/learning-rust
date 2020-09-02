@@ -1,4 +1,4 @@
-FROM rust:1.46
+FROM rust:1.46 AS builder
 
 WORKDIR /todo
 
@@ -17,6 +17,8 @@ RUN rm -f target/release/deps/todo*
 
 RUN cargo build --release
 
-RUN cargo install --path .
+FROM debian:10.4
+
+COPY --from=builder /todo/target/release/todo /usr/local/bin/todo
 
 CMD ["todo"]
