@@ -1,5 +1,9 @@
 Learning Rust
 =============
+[![pixela][pixela-graph]][pixela]
+
+[pixela-graph]: https://pixe.la/v1/users/m3y/graphs/learning-rust?mode=badge
+[pixela]: https://pixe.la/v1/users/m3y/graphs/learning-rust.html
 
 setup
 -----
@@ -56,3 +60,23 @@ cargo doc --no-deps --open
 ```
 - `//` が通常コメント
 - `///` がドキュメント用コメント
+
+## repl
+```
+cargo install evcxr_repl
+```
+
+## wasm
+npm
+```
+asdf install nodejs 12.18.3
+asdf global nodejs 12.18.3
+```
+cargo-generate
+```
+cargo install cargo-generate
+```
+wasm-pack
+```
+curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+```
