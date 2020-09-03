@@ -1,0 +1,20 @@
+[package]
+name = "library"
+version = "0.1.0"
+authors = ["m3y <->"]
+edition = "2018"
+
+[features]
+default = ["parallel", "serde"]
+
+special = []
+
+parallel = ["crossbeam"]
+
+nightly = ["crossbeam/nightly"]
+
+full = ["crossbeam/nightly", "parallel", "serde"]
+
+[dependencies]
+crossbeam = {version = "0.7.3", optional = true}
+serde = {version = "1.0.111", optional = true}
