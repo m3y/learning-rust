@@ -66,6 +66,14 @@ cargo doc --no-deps --open
 cargo install evcxr_repl
 ```
 
+## watch
+```
+cargo install cargo-watch
+```
+```
+cargo watch -x check -x test
+```
+
 ## wasm
 npm
 ```
