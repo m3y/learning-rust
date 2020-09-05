@@ -74,6 +74,14 @@ cargo install cargo-watch
 cargo watch -x check -x test
 ```
 
+## audit
+```
+cargo install cargo-audit
+```
+```
+cargo audit
+```
+
 ## wasm
 npm
 ```
