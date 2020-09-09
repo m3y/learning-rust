@@ -82,6 +82,14 @@ cargo install cargo-audit
 cargo audit
 ```
 
+## license
+```
+cargo install cargo-license
+```
+```
+cargo license
+```
+
 ## wasm
 npm
 ```
