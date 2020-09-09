@@ -65,6 +65,9 @@ cargo doc --no-deps --open
 ```
 cargo install evcxr_repl
 ```
+```
+evcxr
+```
 
 ## watch
 ```
