@@ -32,6 +32,7 @@ fn main() {
     println!("----");
 
     println!("and_then");
+    // println!("{:?}", s.and_then(|n| n + 1)); -> Type violation
     println!(
         "{:?}",
         s.and_then(|n| {
