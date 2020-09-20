@@ -1,3 +1,15 @@
+///// 関数に所有権を移したあとに利用しようとしてコンパイルエラー
+//fn main() {
+//    let important_data = "Hello, World!".to_string();
+//    calc_data(important_data);
+//
+//    println!("{}", important_data);
+//}
+//
+//fn calc_data(data: String) {
+//    println!("{}", data);
+//}
+
 ///// 渡したものを返してもらう
 //fn main() {
 //    let mut important_data = "Hello, World!".to_string();
@@ -16,7 +28,7 @@ fn main() {
     let important_data = "Hello, World!".to_string();
     calc_data(&important_data);
 
-    println!("{}", &important_data);
+    println!("{}", important_data);
 }
 
 fn calc_data(data: &String) {
