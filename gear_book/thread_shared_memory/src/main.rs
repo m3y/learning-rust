@@ -8,7 +8,7 @@ fn main() {
     for x in 0..10 {
         let data_ref = data.clone();
         handles.push(thread::spawn(move || {
-            // lock利用
+            // lock利用してdataへの可変参照を得る
             let mut data = data_ref.lock().unwrap();
             data[x] += 1;
         }));
