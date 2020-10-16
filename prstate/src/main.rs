@@ -41,7 +41,7 @@ impl PullRequest {
     }
 }
 
-async fn query(owner: &str, name: &str, prnum: i32, github_token: String) -> Result<PullRequest> {
+async fn query(owner: &str, name: &str, prnum: i32, github_token: &String) -> Result<PullRequest> {
     let client = reqwest::Client::builder()
         .user_agent("rust reqwest")
         .build()?;
@@ -89,7 +89,7 @@ async fn main() {
         std::process::exit(1);
     });
 
-    let response = query(owner, name, prnum, opts.github_token).await;
+    let response = query(owner, name, prnum, &opts.github_token).await;
     match &response {
         Err(e) => {
             eprintln!("{:#?}", e);
