@@ -101,3 +101,18 @@ async fn main() {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_pull_request_to_message() {
+        let pr = PullRequest {
+            repository_name: "test_repository".to_string(),
+            number: 10,
+            state: "MERGED".to_string(),
+        };
+        assert_eq!("test_repository PR#10 is MERGED", pr.to_message());
+    }
+}
