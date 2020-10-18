@@ -41,7 +41,7 @@ impl PullRequest {
     }
 }
 
-async fn query(owner: &str, name: &str, prnum: i32, github_token: &String) -> Result<PullRequest> {
+async fn query(owner: &str, name: &str, prnum: i32, github_token: &str) -> Result<PullRequest> {
     let client = reqwest::Client::builder()
         .user_agent("rust reqwest")
         .build()?;
