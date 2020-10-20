@@ -116,6 +116,6 @@ rust-musl-builder cargo build --release
 ```
 - osx
 ```
-rust up target add x86_64-apple-darwin
+rustup target add x86_64-apple-darwin
 cargo build --target=x86_64-apple-darwin
 ```
