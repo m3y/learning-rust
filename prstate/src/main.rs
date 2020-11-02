@@ -39,6 +39,13 @@ impl PullRequest {
             &self.repository_name, &self.number, &self.state
         )
     }
+
+    fn to_url(&self) -> String {
+        format!(
+            "https://github.com/Pay-Baymax/{}/pull/{}",
+            &self.repository_name, &self.number
+        )
+    }
 }
 
 async fn query(owner: &str, name: &str, prnum: i32, github_token: &str) -> Result<PullRequest> {
@@ -96,7 +103,14 @@ async fn main() {
             std::process::exit(1);
         }
         Ok(pull_request) => {
-            println!("{}", pull_request.to_message());
+            match &*pull_request.state {
+                "OPEN" => {
+                    eprintln!("{}", pull_request.to_url());
+                }
+                _ => {
+                    println!("{}", pull_request.to_message());
+                }
+            }
             std::process::exit(exitcode::OK);
         }
     }
