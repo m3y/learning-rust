@@ -66,4 +66,7 @@ fn main() {
     // 以下は動作しません。
     println!("This struct `{}` won't print...", Structure(3));
     // FIXME ^ Comment out this line.
+
+    let pi = 3.141592;
+    println!("Pi is roughly {0:.3}", pi);
 }
