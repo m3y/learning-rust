@@ -1,0 +1,7 @@
+### all ignore ###
+/*
+/.**
+
+### not ignre ###
+!/.gitignore
+!/*.rs
